@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Directory</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+      margin: 40px 0 40px 24px;
+      padding: 0;
+      max-width: 600px;
+      line-height: 1.8;
+      color: #1a1a1a;
+      background-color: #f7f6f2;
+    }
+    h1 {
+      font-size: 1.4rem;
+      border-bottom: 2px solid #1a1a1a;
+      padding-bottom: 6px;
+      margin-bottom: 24px;
+      letter-spacing: -0.5px;
+    }
+    .directory-list {
+      list-style-type: none;
+      padding-left: 0;
+      margin: 28px 0;
+    }
+    .directory-list li {
+      margin-bottom: 14px;
+    }
+    .directory-list a {
+      color: #1a1a1a;
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
+    .directory-list a:hover {
+      text-decoration: underline;
+    }
+    p {
+      margin: 12px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>INDEX / DIRECTORY</h1>
+
+  <p>some stuff to chek out.</p>
+
+  <ul class="directory-list">
+    <li><a href="/album.html">album</li>
+    <li><a href="/demo.html">demo</a></li>
+    <li><a href="/live 1.html">cd release for ??? band live</a></li>
+  </ul>
+
+</body>
+</html>
