@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
+  <title>Directory</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,30 +14,33 @@
       font-family: 'Courier Prime', 'Courier New', Courier, monospace;
       margin: 40px 0 40px 24px;
       padding: 0;
-      max-width: 700px;
-      line-height: 1.7;
+      max-width: 600px;
+      line-height: 1.8;
       color: #1a1a1a;
       background-color: #f7f6f2;
     }
     h1 {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       border-bottom: 2px solid #1a1a1a;
       padding-bottom: 6px;
       margin-bottom: 24px;
+      letter-spacing: -0.5px;
     }
-    nav {
-      margin: 24px 0;
-      padding: 12px 0;
-      border-top: 1px dashed #999;
-      border-bottom: 1px dashed #999;
+    .directory-list {
+      list-style-type: none;
+      padding-left: 0;
+      margin: 28px 0;
     }
-    nav a {
+    .directory-list li {
+      margin-bottom: 14px;
+    }
+    .directory-list a {
       color: #1a1a1a;
       text-decoration: none;
       font-weight: bold;
-      margin-right: 18px;
+      font-size: 1.1rem;
     }
-    nav a:hover {
+    .directory-list a:hover {
       text-decoration: underline;
     }
     p {
@@ -47,17 +50,15 @@
 </head>
 <body>
 
-  <h1>DIRECTORY</h1>
+  <h1>INDEX / DIRECTORY</h1>
 
-  <p>Personal archive for recordings, ongoing builds, notes, and podcasts.</p>
+  <p>some stuff to chek out.</p>
 
-  <nav>
-    <a href="/music.html">[ MUSIC ]</a>
-    <a href="/projects.html">[ PROJECTS ]</a>
-    <a href="/podcast.html">[ PODCAST ]</a>
-  </nav>
-
-  <p>Select a section above to browse.</p>
+  <ul class="directory-list">
+    <li><a href="/music.html">[ 01 ] music</a></li>
+    <li><a href="/projects.html">[ 02 ] projects</a></li>
+    <li><a href="/podcast.html">[ 03 ] podcast</a></li>
+  </ul>
 
 </body>
 </html>
