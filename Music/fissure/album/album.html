@@ -37,12 +37,33 @@
       color: #000;
     }
 
+    /* Download All Button */
+    .download-all-box {
+      margin: 16px 0 24px 0;
+    }
+    .download-all-btn {
+      display: inline-block;
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: #1a1a1a;
+      text-decoration: none;
+      border: 1px solid #1a1a1a;
+      padding: 8px 14px;
+      background: #ffffff;
+      box-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+      transition: all 0.15s ease;
+    }
+    .download-all-btn:hover {
+      background: #1a1a1a;
+      color: #f7f6f2;
+    }
+
     /* Side-by-side layout container */
     .album-container {
       display: flex;
       flex-wrap: wrap;
       gap: 36px;
-      margin-top: 24px;
+      margin-top: 20px;
       align-items: flex-start;
     }
 
@@ -100,6 +121,11 @@
   <h1>self titled</h1>
   <p>our only studio album.</p>
 
+  <!-- Download Entire Album Button -->
+  <div class="download-all-box">
+    <a id="download-all-link" href="#" class="download-all-btn" download>[ ↓ DOWNLOAD ALL TRACKS (.ZIP) ]</a>
+  </div>
+
   <div class="album-container">
     
     <!-- LEFT: 3 Artwork Images -->
@@ -114,14 +140,18 @@
     // 1. Base URL for your R2 bucket folder
     const BASE_URL = "https://pub-659b8242d078468eaa8762fd47284652.r2.dev/Fissure/Album/";
 
-    // 2. 3 image filenames in R2:
+    // 2. Set the ZIP filename
+    const ZIP_FILE = "Fissure - Self Titled.zip";
+    document.getElementById("download-all-link").href = BASE_URL + encodeURIComponent(ZIP_FILE);
+
+    // 3. 3 image filenames in R2:
     const images = [
       { file: "cd front.jpg", caption: "[ front cover ]" },
       { file: "cd inner.jpg", caption: "[ inner ]" },
       { file: "cd back.jpg",  caption: "[ back cover ]" }
     ];
 
-    // 3. 8 track filenames:
+    // 4. 8 track filenames:
     const tracks = [
       { title: "fall away",                   file: "01 Fall Away.mp3" },
       { title: "albino",                      file: "02 Albino.mp3" },
@@ -145,7 +175,7 @@
       galleryContainer.appendChild(card);
     });
 
-    // Build the 8 track players with auto-advance and single-track play
+    // Build the 8 track players with auto-advance and clean list view
     const trackContainer = document.getElementById("track-list");
     const audioElements = [];
 
@@ -170,7 +200,7 @@
         });
       });
 
-      // Automatically play the next song when current track ends
+      // Automatically play next song when current one ends
       audio.addEventListener("ended", () => {
         if (index + 1 < audioElements.length) {
           audioElements[index + 1].play();
