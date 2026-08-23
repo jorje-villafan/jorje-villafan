@@ -38,23 +38,18 @@
     }
     .track-entry {
       border-bottom: 1px dashed #bbb;
-      padding: 16px 0;
-      margin-bottom: 12px;
+      padding: 14px 0;
+      margin-bottom: 10px;
     }
     .track-title {
       font-weight: bold;
       font-size: 1.05rem;
       display: block;
-      margin-bottom: 4px;
-    }
-    .track-meta {
-      color: #666;
-      font-size: 0.9rem;
-      margin-bottom: 10px;
+      margin-bottom: 6px;
     }
     audio {
       width: 100%;
-      margin-top: 6px;
+      margin-top: 4px;
     }
   </style>
 </head>
@@ -62,22 +57,41 @@
 
   <a href="/index.html" class="back-link">← [ BACK TO DIRECTORY ]</a>
 
-  <h1>self titled</h1>
-  <p>only studio album</p>
+  <h1>[ 01 ] MUSIC ARCHIVE</h1>
+  <p>Track recordings and session takes.</p>
 
-  <!-- TRACK 01 -->
-  <div class="track-entry">
-    <span class="track-title">fall away</span>
-    <div class="track-meta">format: m4a | Source: R2 Bucket</div>
-    <!-- PASTE YOUR R2 AUDIO URL BELOW -->
-    <audio controls src="https://pub-659b8242d078468eaa8762fd47284652.r2.dev/Fissure/Album/FISSURE_ALBUM_01%20-%20Fall%20Away.m4a"></audio>
-  </div>
+  <!-- The list container where your 9 players will appear -->
+  <div id="track-list"></div>
 
-   <div class="track-entry">
-    <span class="track-title">albino</span>
-    <div class="track-meta">format: m4a | Source: R2 Bucket</div>
-    <!-- PASTE YOUR R2 AUDIO URL BELOW -->
-    <audio controls src="https://pub-659b8242d078468eaa8762fd47284652.r2.dev/Fissure/Album/FISSURE_ALBUM_02%20-%20Albino.m4a"></audio>
-  </div>
+  <script>
+    // 1. Paste your base R2 bucket link once (make sure it ends with a slash /)
+    const BASE_URL = "https://pub-659b8242d078468eaa8762fd47284652.r2.dev/";
+
+    // 2. Simply list your 9 tracks and their filenames here:
+    const tracks = [
+      { title: "01. Track One Title",   file: "track-01.mp3" },
+      { title: "02. Track Two Title",   file: "track-02.mp3" },
+      { title: "03. Track Three Title", file: "track-03.mp3" },
+      { title: "04. Track Four Title",  file: "track-04.mp3" },
+      { title: "05. Track Five Title",  file: "track-05.mp3" },
+      { title: "06. Track Six Title",   file: "track-06.mp3" },
+      { title: "07. Track Seven Title", file: "track-07.mp3" },
+      { title: "08. Track Eight Title", file: "track-08.mp3" },
+      { title: "09. Track Nine Title",  file: "track-09.mp3" }
+    ];
+
+    // Automatically generates the 9 players on the screen
+    const container = document.getElementById("track-list");
+    tracks.forEach(track => {
+      const entry = document.createElement("div");
+      entry.className = "track-entry";
+      entry.innerHTML = `
+        <span class="track-title">${track.title}</span>
+        <audio controls src="${BASE_URL}${track.file}"></audio>
+      `;
+      container.appendChild(entry);
+    });
+  </script>
+
 </body>
 </html>
