@@ -114,23 +114,23 @@
     // 1. Base URL for your R2 bucket folder
     const BASE_URL = "https://pub-659b8242d078468eaa8762fd47284652.r2.dev/Fissure/Album/";
 
-    // 2. Change these filenames to match what your 3 image files are named in R2:
+    // 2. 3 image filenames in R2:
     const images = [
-      { file: "cd front.jpg",  caption: "[ front cover ]" },
+      { file: "cd front.jpg", caption: "[ front cover ]" },
       { file: "cd inner.jpg", caption: "[ inner ]" },
-      { file: "cd back.jpg",   caption: "[ back cover ]" }
+      { file: "cd back.jpg",  caption: "[ back cover ]" }
     ];
 
-    // 3. Your 8 track filenames
+    // 3. 8 track filenames:
     const tracks = [
-      { title: "fall away",                      file: "01 Fall Away.mp3" },
-      { title: "albino",                         file: "02 Albino.mp3" },
-      { title: "fearing (the stranglehold)",     file: "03 Fearing (The Stranglehold).mp3" },
-      { title: "remind me",                      file: "04 Remind Me.mp3" },
-      { title: "eat, breathe, sleep, seethe",    file: "05 Eat, Breathe, Sleep, Seethe.mp3" },
-      { title: "something",                      file: "06 Something.mp3" },
-      { title: "haven",                          file: "07 Haven.mp3" },
-      { title: "tradgedy",                       file: "08 Tragedy.mp3" }
+      { title: "fall away",                   file: "01 Fall Away.mp3" },
+      { title: "albino",                      file: "02 Albino.mp3" },
+      { title: "fearing (the stranglehold)",  file: "03 Fearing (The Stranglehold).mp3" },
+      { title: "remind me",                   file: "04 Remind Me.mp3" },
+      { title: "eat, breathe, sleep, seethe", file: "05 Eat, Breathe, Sleep, Seethe.mp3" },
+      { title: "something",                   file: "06 Something.mp3" },
+      { title: "haven",                       file: "07 Haven.mp3" },
+      { title: "tradgedy",                    file: "08 Tragedy.mp3" }
     ];
 
     // Build the 3 images in the left column
@@ -139,21 +139,47 @@
       const card = document.createElement("div");
       card.className = "image-card";
       card.innerHTML = `
-        <img src="${BASE_URL}${img.file}" alt="${img.caption}">
+        <img src="${BASE_URL}${encodeURIComponent(img.file)}" alt="${img.caption}">
         <div class="image-caption">${img.caption}</div>
       `;
       galleryContainer.appendChild(card);
     });
 
-    // Build the 8 audio players in the right column
+    // Build the 8 track players with auto-advance and single-track play
     const trackContainer = document.getElementById("track-list");
-    tracks.forEach(track => {
+    const audioElements = [];
+
+    tracks.forEach((track, index) => {
       const entry = document.createElement("div");
       entry.className = "track-entry";
-      entry.innerHTML = `
-        <span class="track-title">${track.title}</span>
-        <audio controls src="${BASE_URL}${track.file}"></audio>
-      `;
+
+      const titleSpan = document.createElement("span");
+      titleSpan.className = "track-title";
+      titleSpan.textContent = track.title;
+
+      const audio = document.createElement("audio");
+      audio.controls = true;
+      audio.src = BASE_URL + encodeURIComponent(track.file);
+
+      // Stop other tracks when one starts playing
+      audio.addEventListener("play", () => {
+        audioElements.forEach(otherAudio => {
+          if (otherAudio !== audio) {
+            otherAudio.pause();
+          }
+        });
+      });
+
+      // Automatically play the next song when current track ends
+      audio.addEventListener("ended", () => {
+        if (index + 1 < audioElements.length) {
+          audioElements[index + 1].play();
+        }
+      });
+
+      audioElements.push(audio);
+      entry.appendChild(titleSpan);
+      entry.appendChild(audio);
       trackContainer.appendChild(entry);
     });
   </script>
