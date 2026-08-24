@@ -118,8 +118,8 @@
 
   <a href="/index.html" class="back-link">← [ BACK TO DIRECTORY ]</a>
 
-  <h1>self titled</h1>
-  <p>only studio album.</p>
+  <h1>Live</h1>
+  <p>opened with crypt orchid for a band i cant remember the name of, but they did have a fog machine. also, this was the night some of our first merch showed up.</p>
 
   <!-- Download Entire Album Button -->
   <div class="download-all-box">
@@ -138,29 +138,27 @@
 
   <script>
     // 1. Base URL for your R2 bucket folder
-    const BASE_URL = "https://pub-659b8242d078468eaa8762fd47284652.r2.dev/Fissure/Album/";
+    const BASE_URL = "https://pub-659b8242d078468eaa8762fd47284652.r2.dev/Fissure/live1/";
 
     // 2. Set the ZIP filename
-    const ZIP_FILE = "Fissure Full Album + Art.zip";
+    const ZIP_FILE = "live 1.zip";
     document.getElementById("download-all-link").href = BASE_URL + encodeURIComponent(ZIP_FILE);
 
     // 3. 3 image filenames in R2:
     const images = [
-      { file: "cd front.jpg", caption: "[ front cover ]" },
-      { file: "cd inner.jpg", caption: "[ inner ]" },
-      { file: "cd back.jpg",  caption: "[ back cover ]" }
+      { file: "live1.jpg", caption: "live cd " }
     ];
 
     // 4. 8 track filenames:
     const tracks = [
-      { title: "fall away",                   file: "01 Fall Away.mp3" },
-      { title: "albino",                      file: "02 Albino.mp3" },
-      { title: "fearing (the stranglehold)",  file: "03 Fearing (The Stranglehold).mp3" },
-      { title: "remind me",                   file: "04 Remind Me.mp3" },
-      { title: "eat, breathe, sleep, seethe", file: "05 Eat, Breathe, Sleep, Seethe.mp3" },
-      { title: "something",                   file: "06 Something.mp3" },
-      { title: "haven",                       file: "07 Haven.mp3" },
-      { title: "tradgedy",                    file: "08 Tragedy.mp3" }
+      { title: "under peaceful waters",       file: "01 Under Peaceful Waters.mp3" },
+      { title: "release us",                  file: "02 Release Us.mp3" },
+      { title: "beautiful theory",            file: "03 Beautiful Theory.mp3" },
+      { title: "eat, breathe, sleep, seethe", file: "04 Eat, Breathe, Sleep, Seethe.mp3" },
+      { title: "heavy",                       file: "05 Heavy.mp3" },
+      { title: "haven",                       file: "06 Haven.mp3" },
+      { title: "summer skin",                 file: "07 Summer Skin.mp3" },
+      { title: "fearing                  file: "08 Fearing.mp3" }
     ];
 
     // Build the 3 images in the left column
